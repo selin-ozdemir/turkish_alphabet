@@ -1,21 +1,37 @@
 import streamlit as st
 
-# Page configuration - MUST be the first Streamlit command
+# FORCE LIGHT THEME - THIS FIXES THE BLACK BACKGROUND!
+st.markdown("""
+    <style>
+    /* Override Streamlit's theme completely */
+    .stApp {
+        background-color: #f8fafc !important;
+    }
+    [data-testid="stAppViewContainer"] {
+        background-color: #f8fafc !important;
+    }
+    [data-testid="stHeader"] {
+        background-color: #ffffff !important;
+    }
+    section[data-testid="stSidebar"] {
+        background-color: #ffffff !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Page configuration
 st.set_page_config(
     page_title="Turkish Alphabet Pronunciation Guide",
     page_icon="🇹🇷",
     layout="wide"
 )
 
-# Custom CSS for styling - CLEAN & READABLE!
+# Rest of your styling
 st.markdown("""
     <style>
-    .main {
-        background-color: #f8fafc;
-    }
     .stButton>button {
-        background-color: #e11d48;
-        color: white;
+        background-color: #e11d48 !important;
+        color: white !important;
         font-size: 20px;
         font-weight: bold;
         border-radius: 8px;
@@ -26,11 +42,11 @@ st.markdown("""
         transition: all 0.3s;
     }
     .stButton>button:hover {
-        background-color: #be123c;
+        background-color: #be123c !important;
         transform: scale(1.05);
     }
     .word-card {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
         padding: 20px;
         border-radius: 8px;
         border: 2px solid #e5e7eb;
@@ -38,30 +54,33 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     .word-card h3 {
-        color: #e11d48;
+        color: #e11d48 !important;
         margin-top: 0;
         font-size: 20px;
     }
     .word-card p {
-        color: #374151;
+        color: #374151 !important;
         margin: 5px 0;
     }
     .tips-box {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
         padding: 20px;
         border-radius: 8px;
         border: 2px solid #fbbf24;
         margin-top: 20px;
     }
     .tips-box h3 {
-        color: #1f2937;
+        color: #1f2937 !important;
         margin-top: 0;
     }
     .tips-box ul {
-        color: #374151;
+        color: #374151 !important;
+    }
+    .tips-box li {
+        color: #374151 !important;
     }
     .selected-letter {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
         padding: 25px;
         border-radius: 8px;
         border: 2px solid #e11d48;
@@ -69,22 +88,29 @@ st.markdown("""
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     .selected-letter h2 {
-        color: #e11d48;
+        color: #e11d48 !important;
         font-size: 48px;
         margin: 0;
     }
     .selected-letter p {
-        color: #374151;
+        color: #374151 !important;
         font-size: 18px;
         margin: 10px 0;
     }
     .selected-letter strong {
-        color: #1f2937;
+        color: #1f2937 !important;
     }
     .selected-letter .sound {
-        color: #e11d48;
+        color: #e11d48 !important;
         font-weight: bold;
         font-size: 22px;
+    }
+    /* Force all text to be dark */
+    h1, h2, h3, h4, h5, h6 {
+        color: #1f2937 !important;
+    }
+    p, span, div, label {
+        color: #374151 !important;
     }
     </style>
 """, unsafe_allow_html=True)
