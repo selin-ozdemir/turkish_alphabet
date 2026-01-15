@@ -7,11 +7,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS for styling - IMPROVED COLORS!
+# Custom CSS for styling - CLEAN & READABLE!
 st.markdown("""
     <style>
     .main {
-        background: linear-gradient(to bottom right, #f8fafc, #ffffff, #f1f5f9);
+        background-color: #f8fafc;
     }
     .stButton>button {
         background-color: #e11d48;
@@ -22,7 +22,7 @@ st.markdown("""
         padding: 15px;
         border: none;
         width: 100%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: all 0.3s;
     }
     .stButton>button:hover {
@@ -31,37 +31,63 @@ st.markdown("""
     }
     .word-card {
         background-color: #ffffff;
-        padding: 15px;
+        padding: 20px;
         border-radius: 8px;
-        border: 2px solid #e11d48;
+        border: 2px solid #e5e7eb;
         margin: 10px 0;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
+    .word-card h3 {
+        color: #e11d48;
+        margin-top: 0;
+        font-size: 20px;
+    }
+    .word-card p {
+        color: #374151;
+        margin: 5px 0;
+    }
     .tips-box {
-        background-color: #fffbeb;
+        background-color: #ffffff;
         padding: 20px;
         border-radius: 8px;
         border: 2px solid #fbbf24;
         margin-top: 20px;
+    }
+    .tips-box h3 {
         color: #1f2937;
+        margin-top: 0;
+    }
+    .tips-box ul {
+        color: #374151;
     }
     .selected-letter {
         background-color: #ffffff;
-        padding: 20px;
+        padding: 25px;
         border-radius: 8px;
         border: 2px solid #e11d48;
         margin: 20px 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    h1, h2, h3 {
-        color: #1f2937 !important;
+    .selected-letter h2 {
+        color: #e11d48;
+        font-size: 48px;
+        margin: 0;
     }
-    p {
-        color: #374151 !important;
+    .selected-letter p {
+        color: #374151;
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    .selected-letter strong {
+        color: #1f2937;
+    }
+    .selected-letter .sound {
+        color: #e11d48;
+        font-weight: bold;
+        font-size: 22px;
     }
     </style>
 """, unsafe_allow_html=True)
-
 
 # Initialize session state
 if 'selected_letter' not in st.session_state:
@@ -129,14 +155,13 @@ def translate_text(text):
     return result
 
 # Title
-st.markdown("<h1 style='text-align: center; color: #dc2626;'>🇹🇷 Turkish Alphabet Pronunciation Guide</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #6b7280;'>Learn to read Turkish using English sounds</p>", unsafe_allow_html=True)
-
+st.title("🇹🇷 Turkish Alphabet Pronunciation Guide")
+st.markdown("**Learn to read Turkish using English sounds**")
 st.markdown("---")
 
 # The Alphabet Section
-st.markdown("## 📖 The Alphabet")
-st.markdown("Click on any letter to see its pronunciation:")
+st.header("📖 The Alphabet")
+st.write("Click on any letter to see its pronunciation:")
 
 # Create columns for the alphabet grid
 cols_per_row = 7
@@ -154,17 +179,17 @@ if st.session_state.selected_letter is not None:
     letter = st.session_state.selected_letter
     st.markdown(f"""
     <div class='selected-letter'>
-        <h2 style='color: #dc2626;'>🔊 {letter['letter']}</h2>
-        <p style='font-size: 18px;'><strong>Sound:</strong> <span style='color: #dc2626; font-weight: bold;'>{letter['sound']}</span></p>
-        <p style='font-size: 18px;'><strong>Like in English:</strong> <em>{letter['example']}</em></p>
-        <p style='font-size: 18px;'><strong>Example word:</strong> <strong>{letter['turkish']}</strong> ({letter['meaning']})</p>
+        <h2>🔊 {letter['letter']}</h2>
+        <p><strong>Sound:</strong> <span class='sound'>{letter['sound']}</span></p>
+        <p><strong>Like in English:</strong> <em>{letter['example']}</em></p>
+        <p><strong>Example word:</strong> <strong>{letter['turkish']}</strong> ({letter['meaning']})</p>
     </div>
     """, unsafe_allow_html=True)
 
 st.markdown("---")
 
 # Common Turkish Words Section
-st.markdown("## 💬 Common Turkish Words")
+st.header("💬 Common Turkish Words")
 
 col1, col2 = st.columns(2)
 for idx, item in enumerate(common_words):
@@ -172,17 +197,17 @@ for idx, item in enumerate(common_words):
     with target_col:
         st.markdown(f"""
         <div class='word-card'>
-            <p style='font-size: 20px; font-weight: bold; color: #dc2626;'>{item['word']}</p>
-            <p style='font-style: italic; color: #374151;'>{item['pronunciation']}</p>
-            <p style='color: #6b7280;'>"{item['meaning']}"</p>
+            <h3>{item['word']}</h3>
+            <p><em>{item['pronunciation']}</em></p>
+            <p>"{item['meaning']}"</p>
         </div>
         """, unsafe_allow_html=True)
 
 st.markdown("---")
 
 # Practice Reading Section
-st.markdown("## ✨ Practice Reading")
-st.markdown("Type any Turkish word and see how to pronounce it!")
+st.header("✨ Practice Reading")
+st.write("Type any Turkish word and see how to pronounce it!")
 
 practice_text = st.text_input("", placeholder="Try: Istanbul, Ankara, Türkiye...", key="practice")
 
@@ -190,8 +215,8 @@ if practice_text:
     pronunciation = translate_text(practice_text)
     st.markdown(f"""
     <div class='word-card'>
-        <p style='font-size: 18px;'><strong>Turkish:</strong> {practice_text}</p>
-        <p style='font-size: 18px; color: #dc2626;'><strong>Approximate pronunciation:</strong> {pronunciation}</p>
+        <p><strong>Turkish:</strong> {practice_text}</p>
+        <p><strong>Approximate pronunciation:</strong> <span class='sound'>{pronunciation}</span></p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -200,8 +225,8 @@ st.markdown("---")
 # Tips Section
 st.markdown("""
 <div class='tips-box'>
-    <h3 style='margin-top: 0;'>💡 Key Tips:</h3>
-    <ul style='color: #374151;'>
+    <h3>💡 Key Tips:</h3>
+    <ul>
         <li>Turkish is phonetic - each letter always makes the same sound</li>
         <li><strong>C</strong> sounds like J in "jam", not K</li>
         <li><strong>Ç</strong> sounds like CH in "chair"</li>
