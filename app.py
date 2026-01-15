@@ -7,14 +7,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS for styling
+# Custom CSS for styling - IMPROVED COLORS!
 st.markdown("""
     <style>
     .main {
-        background: linear-gradient(to bottom right, #fef2f2, #ffffff, #fef2f2);
+        background: linear-gradient(to bottom right, #f8fafc, #ffffff, #f1f5f9);
     }
     .stButton>button {
-        background-color: #dc2626;
+        background-color: #e11d48;
         color: white;
         font-size: 20px;
         font-weight: bold;
@@ -26,32 +26,42 @@ st.markdown("""
         transition: all 0.3s;
     }
     .stButton>button:hover {
-        background-color: #b91c1c;
+        background-color: #be123c;
         transform: scale(1.05);
     }
     .word-card {
-        background-color: #fef2f2;
+        background-color: #ffffff;
         padding: 15px;
         border-radius: 8px;
-        border: 2px solid #fecaca;
+        border: 2px solid #e11d48;
         margin: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     .tips-box {
-        background-color: #fef9c3;
+        background-color: #fffbeb;
         padding: 20px;
         border-radius: 8px;
-        border: 2px solid #fde047;
+        border: 2px solid #fbbf24;
         margin-top: 20px;
+        color: #1f2937;
     }
     .selected-letter {
-        background-color: #fee2e2;
+        background-color: #ffffff;
         padding: 20px;
         border-radius: 8px;
-        border: 2px solid #fecaca;
+        border: 2px solid #e11d48;
         margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3 {
+        color: #1f2937 !important;
+    }
+    p {
+        color: #374151 !important;
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Initialize session state
 if 'selected_letter' not in st.session_state:
