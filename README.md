@@ -1,7 +1,11 @@
+
 # Turkish Alphabet Learning App
 
-An interactive web application designed to help English speakers learn and master Turkish pronunciation without prior knowledge of the language.
+🌐 **[✨ Try it Live!](https://turkishalphabet-jjszghtamsugzmebdddfvf.streamlit.app/)** 🌐
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://turkishalphabet-jjszghtamsugzmebdddfvf.streamlit.app/)
+
+An interactive web application designed to help English speakers learn and master Turkish pronunciation without prior knowledge of the language.
 ## 🎯 Overview
 
 The Turkish alphabet contains 29 letters, including 8 unique characters not found in English (Ç, Ğ, İ, Ö, Ş, Ü, and the dotless ı). This application provides an intuitive, interactive way to learn the pronunciation of each letter through phonetic guides and audio examples.
@@ -18,7 +22,6 @@ The Turkish alphabet contains 29 letters, including 8 unique characters not foun
 
 - **Python 3.x**: Core programming language
 - **Streamlit**: Web application framework for the interactive UI
-- **Audio Processing**: Built-in audio playback functionality
 
 ## 🚀 Installation & Setup
 
